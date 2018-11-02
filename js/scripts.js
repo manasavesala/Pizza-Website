@@ -1,35 +1,33 @@
-// Business Logic for AddressBook ---------
-function AccountBook() {
-  this.accounts = [],
+function PizzaBook() {
+  this.lists = [],
   this.currentId = 0
 }
 
-AccountBook.prototype.addAccount = function(account) {
-  account.id = this.assignId();
-  this.accounts.push(account);
+PizzaBook.prototype.addPizza = function(list) {
+  list.id = this.assignId();
+  this.lists.push(contact);
 }
 
-AccountBook.prototype.assignId = function() {
+AddressBook.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
 }
 
-AccountBook.prototype.findAccount = function(id) {
-  for (var i=0; i< this.accounts.length; i++) {
-    if (this.accounts[i]) {
-      if (this.accounts[i].id == id) {
-        return this.accounts[i];
+AddressBook.prototype.findPizza = function(id) {
+  for (var i=0; i< this.lists.length; i++) {
+    if (this.lists[i]) {
+      if (this.lists[i].id == id) {
+        return this.lists[i];
       }
     }
   };
   return false;
 }
-
-AccountBook.prototype.deleteAccount = function(id) {
-  for (var i=0; i< this.accounts.length; i++) {
-    if (this.accounts[i]) {
-      if (this.accounts[i].id == id) {
-        delete this.accounts[i];
+AddressBook.prototype.deletePizza = function(id) {
+  for (var i=0; i< this.lists.length; i++) {
+    if (this.lists[i]) {
+      if (this.lists[i].id == id) {
+        delete this.lists[i];
         return true;
       }
     }
@@ -37,39 +35,62 @@ AccountBook.prototype.deleteAccount = function(id) {
   return false;
 }
 
-// Business Logic for Contacts ---------
-function BankAccount(name, initialDeposit) {
-  this.name = name,
-  this.currentBalance = initialDeposit
+
+function Pizza(crust,size,meatToppings,toppings){
+  this.crust = crust,
+  this.size = size,
+  this.meatToppings = meatToppings,
+  this.toppings = toppings 
 }
 
-// function DepositOrWithdraw(depositAmount, withdrawalAmount) {
-//   this.depositAmount = depositAmount,
-//   this.withdrawalAmount = withdrawalAmount
-// }
+var pizzaBook = new PizzaBook();
 
-BankAccount.prototype.deposit = function(deposit) {
-  this.currentBalance += deposit;
+function displayPizzaDetails(pizzaBookToDisplay) {
+  var pizzasList = $("ul#contacts");
+  var htmlForPizzaInfo = "";
+  pizzaBookToDisplay.contacts.forEach(function(pizza) {
+    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizza.firstName + " " + "ADD TO CART" + "</li>";
+  });
+  pizzasList.html(htmlForPizzaInfo);
+};
+function showPizza(pizzaId) {
+  var list = pizzaBook.findPizza(pizzaId);
+  $("#receipt").show();
+  $("#crustop").html(pizza.crust);
+  $("#size").html(pizza.size);
+  $("#mt").html(pizza.meatToppings);
+  $("#top").html(pizza.toppings);
+  
+  var buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<button class='showReceipt' id=" +  + contact.id + ">CheckOut</button>");
 }
-BankAccount.prototype.withdrawal = function(withdrawal) {
-  this.currentBalance -= withdrawal;
-}
+
+function attachPizzaListeners() {
+  $("ul#contacts").on("click", "li", function() {
+    showPizza(this.id);
+  });
+  $(".billing-address").on("click", function(){
+    $(".billing-address").hide();
+  });
+  $("#buttons").on("click", ".showReceipt", function() {
+    $("#receipt").show();
+    displayPizzaDetails(pizzaBook);
+  });
+};
 
 // User Interface Logic ---------
-var accountBook = new AccountBook();
-
-function showContact(accountId) {
-  var account = accountBook.findAccount(accountId);
-  $("#show-balance").show();
-  $(".current-balance").html(account.currentBalance);
-}
-
-
-
 $(document).ready(function() {
-  $("button").submit(function(event) {
+   attachPizzaListeners();
+  // $("#crust").click(function(event) {
+  //   event.preventDefault();
+
+  // });
+
+  $("button").click(function(event) {
     event.preventDefault();
     var crust = $("input:radio[name=crust]:checked").val();
+    alert(crust);
     var size = $("input:radio[name=size]:checked").val();
     $("input:checkbox[name=meat-toppings]:checked").each(function(){
       var meatToppings = $(this).val();
@@ -80,9 +101,4 @@ $(document).ready(function() {
       $('#top').append(toppings + "<br>");
     });
   })
-
-  $("#name").text(currentAccount.name);
-  $(".account-number").text(currentAccount.id);
-  $("#congratulations").hide();
-
 })
