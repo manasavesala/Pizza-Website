@@ -17,6 +17,10 @@ h1{
   border-radius: 15px;
   text-decoration: underline;
 }
+h1:hover{
+  color: orange;
+  font-size: 150px;
+}
 body {
   background-image: url("../img/bg1.jpg");
   background-size: cover;

@@ -23,7 +23,6 @@ PizzaBook.prototype.findPizza = function(id) {
   };
   return false;
 }
-
 PizzaBook.prototype.deletePizza = function(id) {
   for (var i=0; i< this.lists.length; i++) {
     if (this.lists[i]) {
@@ -75,9 +74,10 @@ function showPizza(pizzaId) {
   buttondel.append("<button class='del' id=" +  + pizza.id + ">Delete Order</button>");
 }
 
+
 function attachPizzaListeners(pizzaId) {
   $("#buttons").on("click", ".checkout", function() {
-    alert("your Order will be ready in 1 min.");
+    alert("your Order will be ready in 1 mins.");
     $("#checkout").hide();
   });
   $("#buttondel").on("click", ".del", function() {
@@ -89,6 +89,7 @@ function attachPizzaListeners(pizzaId) {
 // User Interface Logic ---------
 $(document).ready(function() {
    attachPizzaListeners(pizzaBook.pizzaId);
+
   $("button").click(function(event) {
     event.preventDefault();
     var crust = $("input:radio[name=crust]:checked").val();
@@ -97,15 +98,12 @@ $(document).ready(function() {
     $("input:checkbox[name=meat-toppings]:checked").each(function(){
       var meatTopping = $(this).val();
       meatToppings.push(meatTopping);
-      // $('#mt').append(meatToppings + "<br>");
     });
     var toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function(){
       var topping = $(this).val();
       toppings.push(topping);
-      // $('#top').append(toppings + "<br>");
     });
-
     var newpizza = new Pizza(crust, size1, meatToppings,toppings);
     pizzaBook.addPizza(newpizza);
     showPizza(pizzaBook.pizzaId);
