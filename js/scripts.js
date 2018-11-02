@@ -35,9 +35,17 @@ PizzaBook.prototype.deletePizza = function(id) {
   return false;
 }
 
-// Pizza.prototype.price = function(size1,meatToppings,toppings){
-// if(size1 == "small") && (toppings = )
-// }
+Pizza.prototype.price = function(){
+  var mt = this.meatToppings.length;
+  var top = this.toppings.length;
+  if(this.size1 == "small") {
+    return 8 + (top*2) + (mt*3);
+  }else if(this.size1 == "medium") {
+    return 10 + (top*2) + (mt*3);
+  }else if(this.size1 == "large") {
+    return 12 + (top*2) + (mt*3);
+  }
+}
 
 function Pizza(crust,size1,meatToppings,toppings){
   this.crust = crust,
@@ -49,30 +57,38 @@ function Pizza(crust,size1,meatToppings,toppings){
 var pizzaBook = new PizzaBook();
 
 function showPizza(pizzaId) {
+  console.log(pizzaId);
   var pizza = pizzaBook.findPizza(pizzaId);
   $("#checkout").show();
   $("#crustop").html(pizza.crust);
   $("#sizeop").html(pizza.size1);
-  $("#mt").html(pizza.meatToppings);
-  $("#top").html(pizza.toppings);
+  $("#mt").html(pizza.meatToppings +"," );
+  $("#top").html(pizza.toppings+ ",");
+  $("#price").html(pizza.price());
   
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='checkout' id=" +  + pizza.id + ">CheckOut</button>");
+  var buttondel = $("#buttondel");
+  buttondel.empty();
+  buttondel.append("<button class='del' id=" +  + pizza.id + ">Delete Order</button>");
 }
 
-function attachPizzaListeners() {
-  $("ul#lists").on("click", "li", function() {
-    showPizza(this.id);
-  });
+
+function attachPizzaListeners(pizzaId) {
   $("#buttons").on("click", ".checkout", function() {
-    $("#checkout").show();
+    alert("your Order will be ready in 15 mins.");
+    $("#checkout").hide();
+  });
+  $("#buttondel").on("click", ".del", function() {
+    pizzaBook.deletePizza(this.id);
+    $("#checkout").hide();
   });
 };
 
 // User Interface Logic ---------
 $(document).ready(function() {
-   attachPizzaListeners();
+   attachPizzaListeners(pizzaBook.pizzaId);
   // $("#crust").click(function(event) {
   //   event.preventDefault();
 
