@@ -1,3 +1,7 @@
 #receipt{
   display:none;
 }
+#checkout{
+  display:none;
+  float: right;
+}

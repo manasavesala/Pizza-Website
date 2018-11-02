@@ -15,7 +15,7 @@
         <p>Select Crust:</p>
         <div class="radio">
           <label>
-            <input type="radio" name="crust" value="thin-crust" checked>
+            <input type="radio" name="crust" value="crunchy-thin-crust" checked>
             Crunchy Thin Crust 
           </label>
         </div>
@@ -27,33 +27,32 @@
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="crust" value="gluten-free">
+            <input type="radio" name="crust" value="gluten-free-crust">
             Gluten Free Crust
           </label>
         </div>
       </div>
-      <div id="size">
+      <div id="size1">
         <p>Select Pizza Size:</p>
         <div class="radio">
           <label>
-            <input type="radio" name="size" value="small" checked>
+            <input type="radio" name="size1" value="small" checked>
             Small
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="size" value="medium">
+            <input type="radio" name="size1" value="medium">
             Medium
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="size" value="large">
+            <input type="radio" name="size1" value="large">
             Large
           </label>
         </div>
       </div>
-      <!-- <div class="row"> -->
       <div id = "toppings">
         <div class="form-group">
           <p>Meat Toppings:</p>
@@ -71,20 +70,33 @@
           <input type="checkbox" name="toppings" value="cheddar-cheese">Cheddar Cheese<br>
         </div>
       </div>  
-      <button type="submit" "btn btn-primary" id="button" >Submit </button>
-      <div id="receipt">
-        <h3>Receipt</h3>
+      <button type="submit" "btn btn-primary" id="button" >Add To Cart </button>
+      <div id="checkout">
+        <h3></h3>
         <p>Crust:</p>
         <p id="crustop"> </p>
         <p>Size:</p>
         <p id="sizeop"> </p>
         <p>Meat Toppings:</p>
         <p id="mt"> </p>
+        <p>Toppings:</p>
+        <p id="top"> </p>
+        <div id="buttons"> </div>
+        <div id="buttondel"> </div>
+      </div>  
+      <div id="receipt">
+        <h3></h3>
+        <p>Crust:</p>
+        <p id="crustop"> </p>
+        <p>Size:</p>
+        <p id="sizeop"> </p>
         <p>Meat Toppings:</p>
+        <p id="mt"> </p>
+        <p>Toppings:</p>
         <p id="top"> </p>
         <p>Price:</p>
         <p id="price"></p>
-      </div>  
+      </div>
     </div>
   </body>
 </html>      
