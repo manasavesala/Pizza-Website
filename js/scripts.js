@@ -23,6 +23,7 @@ PizzaBook.prototype.findPizza = function(id) {
   };
   return false;
 }
+
 PizzaBook.prototype.deletePizza = function(id) {
   for (var i=0; i< this.lists.length; i++) {
     if (this.lists[i]) {
@@ -74,7 +75,6 @@ function showPizza(pizzaId) {
   buttondel.append("<button class='del' id=" +  + pizza.id + ">Delete Order</button>");
 }
 
-
 function attachPizzaListeners(pizzaId) {
   $("#buttons").on("click", ".checkout", function() {
     alert("your Order will be ready in 1 min.");
@@ -89,7 +89,6 @@ function attachPizzaListeners(pizzaId) {
 // User Interface Logic ---------
 $(document).ready(function() {
    attachPizzaListeners(pizzaBook.pizzaId);
-
   $("button").click(function(event) {
     event.preventDefault();
     var crust = $("input:radio[name=crust]:checked").val();
@@ -107,8 +106,6 @@ $(document).ready(function() {
       // $('#top').append(toppings + "<br>");
     });
 
-    $("input:radio[name=crust]:checked").val(" ");
-    $("input:radio[name=size1]:checked").val(" ");
     var newpizza = new Pizza(crust, size1, meatToppings,toppings);
     pizzaBook.addPizza(newpizza);
     showPizza(pizzaBook.pizzaId);
