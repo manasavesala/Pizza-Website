@@ -62,8 +62,8 @@ function showPizza(pizzaId) {
   $("#checkout").show();
   $("#crustop").html(pizza.crust);
   $("#sizeop").html(pizza.size1);
-  $("#mt").html(pizza.meatToppings +"," );
-  $("#top").html(pizza.toppings+ ",");
+  $("#mt").html(pizza.meatToppings +" " );
+  $("#top").html(pizza.toppings+ " ");
   $("#price").html(pizza.price());
   
   var buttons = $("#buttons");
@@ -89,10 +89,6 @@ function attachPizzaListeners(pizzaId) {
 // User Interface Logic ---------
 $(document).ready(function() {
    attachPizzaListeners(pizzaBook.pizzaId);
-  // $("#crust").click(function(event) {
-  //   event.preventDefault();
-
-  // });
 
   $("button").click(function(event) {
     event.preventDefault();
