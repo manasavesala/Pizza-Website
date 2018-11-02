@@ -77,7 +77,7 @@ function showPizza(pizzaId) {
 
 function attachPizzaListeners(pizzaId) {
   $("#buttons").on("click", ".checkout", function() {
-    alert("your Order will be ready in 15 mins.");
+    alert("your Order will be ready in 1 min.");
     $("#checkout").hide();
   });
   $("#buttondel").on("click", ".del", function() {
@@ -106,6 +106,9 @@ $(document).ready(function() {
       toppings.push(topping);
       // $('#top').append(toppings + "<br>");
     });
+
+    $("input:radio[name=crust]:checked").val(" ");
+    $("input:radio[name=size1]:checked").val(" ");
     var newpizza = new Pizza(crust, size1, meatToppings,toppings);
     pizzaBook.addPizza(newpizza);
     showPizza(pizzaBook.pizzaId);

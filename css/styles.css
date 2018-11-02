@@ -8,10 +8,14 @@ h1{
   text-align: center;
   font-family:'K2D', sans-serif;
   font-weight: bolder;
-  font-size: 100px;
-  background-color: white;
+  font-size: 130px;
+  background-color: #eef2e8;
   opacity: 0.8;
   padding-bottom: 30px;
+  color: blue;
+  border:10px solid black;
+  border-radius: 15px;
+  text-decoration: underline;
 }
 body {
   background-image: url("../img/bg1.jpg");
@@ -19,18 +23,19 @@ body {
   background-attachment: fixed;
 }
 .container{
-  border: 3px solid red;
+  border: 10px solid black;
   float: left;
-  /*border-radius: 15px;*/
+  border-radius: 15px;
   width: 40%;
   background-color: white;
   opacity: 0.5;
   margin-right: 0.5px;
   font-size: 30px;
   padding-right: 40px;
+  color:red;
 }
 #cob{
-  border: 3px solid red;
+  border: 10px solid black;
   border-radius: 15px;
   width: 30%;
   background-color: white;
@@ -40,4 +45,15 @@ body {
   margin-right: 40px;
   padding-left: 20px;
 }
-
+p{
+  font-size: 45px;
+  color: black;
+  font-weight: bold;
+}
+#button{
+  background-color: green;
+}
+#order{
+  font-size: 40px;
+  color: red;
+}
